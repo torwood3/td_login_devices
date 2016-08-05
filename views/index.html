@@ -11,11 +11,14 @@
         <th>HTTP Verb</th>
         <th>Description</th>
     </tr>
-    <tr><td>/api/bears</td><td>GET</td><td>Get all the bears.</td></tr>
-    <tr><td>/api/bears</td><td>POST</td><td>Create a bear.</td></tr>
-    <tr><td>/api/bears/:bear_id</td><td>GET</td><td>Get a single bear.</td></tr>
-    <tr><td>/api/bears/:bear_id</td><td>PUT</td><td>Update a bear with new info.</td></tr>
-    <tr><td>/api/bears/:bear_id</td><td>DELETE</td><td>Delete a bear.</td></tr>
+    <tr><td>/users/login</td><td>POST</td><td>Log user (email and password)</td></tr>
+    <tr><td>/users/register</td><td>POST</td><td>Register user (email and password)</td></tr>
+
+    <tr><td>/api/devices</td><td>GET</td><td>Get all devices for a user. User must be logged.</td></tr>
+    <tr><td>/api/devices</td><td>POST</td><td>Add a device (name).</td></tr>
+    <tr><td>/api/devices/:device_id</td><td>GET</td><td>Get a single device.</td></tr>
+    <tr><td>/api/devices/:device_id</td><td>PUT</td><td>Update a device with new data (name).</td></tr>
+    <tr><td>/api/devices/:device_id</td><td>DELETE</td><td>Delete a device.</td></tr>
 </table>
 
 <br><br>

@@ -1,0 +1,29 @@
+<div>
+    <div ng-show="false">
+        <!-- Live Coding afin de montrer ng-show, two way data biding, etc.. -->
+        <form id="login" role="form">
+            Bonjour !
+
+            Quel est ton nom ?  <input type="text" ng-model="user.email" />
+
+            <div ng-show="user.username.length > 0">
+                <br><br>
+                Salut {{user.username}},
+                <br>
+                    Si tu veux avoir accès à ta page il va falloir donner ton mot de passe : <input type="password" name="user.password" />
+
+                <input type="button" ng-click="login(user)" value="Login" />
+            </div>
+        </form>
+    </div>
+
+    <div id="loginPage">
+        <form novalidate id="loginForm" role="form">
+            <input type="text" ng-model="user.email" placeholder="Username"/>
+            <input type="password" ng-model="user.password" placeholder="Password">
+            <input type="button" ng-click="vm.reset()" value="Reset" />
+            <input type="button" ng-click="vm.login(user)" value="Login" />
+        </form>
+        {{user.password}}
+    </div>
+</div>

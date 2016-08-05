@@ -1,0 +1,17 @@
+<div id="regPage">
+    <form novalidate id="regForm" role="form">
+        <input type="text" ng-model="user.email" placeholder="Username"  ng-required />
+        <input type="password" ng-model="user.password" placeholder="Password"  ng-required />
+        <input type="password" ng-model="user.password2" pw-check="user.password" placeholder="Password" ng-required/>
+        <input type="button" ng-click="reg.reset()" value="Reset" />
+        <input type="button" ng-click="reg.signup(user)" value="Register" />
+        <div class="msg-block" ng-show="myForm.$error">
+          <span class="msg-error" ng-show="myForm.pw2.$error.pwmatch">
+            Passwords don't match.
+          </span>
+        </div>
+    </form>
+    {{user.password}}
+</div>
+
+
