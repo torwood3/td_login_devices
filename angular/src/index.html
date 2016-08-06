@@ -11,6 +11,7 @@
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- build:css({.tmp,src}) styles/app.css -->
     <!-- inject:css -->
@@ -21,7 +22,33 @@
 
 
   <body ng-app="app">
-    <div ng-view></div>
+  <div ng-controller="MenuCtrl">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-show="$root.displayMenu">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#!/">TD 1 - Angular & Bootstrap</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#!/">Home</a></li>
+            <li><a href="#!/devices" ng-click="isActive = 'devices'" ng-class="isActive == 'devices' ? 'active' : ''">Devices</a></li>
+            <li><a href="#!/profile" ng-click="isActive = 'profile'" ng-class="isActive == 'profile' ? 'active' : ''">Profile</a></li>
+            <li><a href="#!/" ng-click="$root.logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+    <div class="container main">
+      {{$root.message}}
+      <div ng-view></div>
+    </div>
   </body>
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->

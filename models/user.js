@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
-    name: String,
-    email        : String,
-    password     : String,
+    lasename    : String,
+    username    : String,
+    password    : String,
 });
 
 // checking if password is valid

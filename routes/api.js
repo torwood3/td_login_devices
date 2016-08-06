@@ -5,10 +5,12 @@ var Device = require('../models/device');
 router.route('/devices')
     .post(function(req, res) {
 
+      console.log("postDevices")
       var device = new Device();      // create a new instance of the Device model
-      device.name = req.body.name;  // set the devices name (comes from the request)
-      device.owner = req.user._id;
-        console.log(req.user)
+      device.name = req.body.name;
+      device.type = req.body.type;
+      device.ip = req.body.ip;
+      device.owner = req.sessionID;
       device.save(function(err) {
         if (err)
           res.send(err);
@@ -18,7 +20,8 @@ router.route('/devices')
 
     })
     .get(function(req, res) {
-        Device.find({owner: req.user._id},function(err, devices) {
+        console.log("getDevices")
+        Device.find({owner: req.sessionID},function(err, devices) {
             if (err)
                 res.send(err);
 
@@ -31,7 +34,7 @@ router.route('/devices/:device_id')
         Device.findById(req.params.device_id, function(err, device) {
             if (err)
                 res.send(err);
-            if( device.owner === req.user._id)
+            if( device.owner === req.sessionID)
                 res.json(device);
             else {
                 req.json({error: "User not allow"})
@@ -42,7 +45,7 @@ router.route('/devices/:device_id')
         Device.findById(req.params.device_id, function(err, device) {
             if (err)
                 res.send(err);
-            if( device.owner === req.user._id) {
+            if( device.owner === req.sessionID) {
 
                 device.name = req.body.name;
                 device.save(function (err) {

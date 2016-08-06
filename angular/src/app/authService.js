@@ -10,10 +10,12 @@ authService.$inject = ['$http'];
 
 function authService($http) {
     var host = 'http://127.0.0.1:3010';
+    var sessionID = '-1';
     var isLogged = false;
     var user = {};
 
     var service = {
+        sessionID: sessionID,
         login: login,
         isLogged: isLogged,
         signup: signup,
@@ -49,5 +51,9 @@ function authService($http) {
         function loginFailed(error) {
             console.error('XHR Failed for login.' + error.data);
         }
+    }
+
+    function loggedin(){
+        return $http.get(host + '/users/loggedin/' + authService.sessionID)
     }
 }

@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/angular', function(req, res, next) {
-  res.sendFile(path.join(__dirname+'/../views/angular.html'));
+  res.sendFile(path.join(__dirname+'/../public/angular.html'));
 });
 
 router.get('/react', function(req, res, next) {

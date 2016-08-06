@@ -6,9 +6,9 @@ angular
     .module('app')
     .factory('deviceService', deviceService);
 
-deviceService.$inject = ['$http'];
+deviceService.$inject = ['$http', 'authService'];
 
-function deviceService($http) {
+function deviceService($http, authService) {
     var host = 'http://127.0.0.1:3010';
 
     var service = {
@@ -20,7 +20,7 @@ function deviceService($http) {
     ////////////
 
     function getDevices() {
-        return $http.get(host + '/api/devices')
+        return $http.get(host + '/api/devices?sessionID=' + authService.sessionID)
             .then(getDevicesComplete)
             .catch(getDevicesFailed);
 
@@ -34,6 +34,7 @@ function deviceService($http) {
     }
 
     function addDevice(device) {
+        device.sessionID = authService.sessionID;
         return $http.post(host + '/api/devices', device)
             .then(getDevicesComplete)
             .catch(getDevicesFailed);

@@ -1,29 +1,13 @@
-<div>
-    <div ng-show="false">
-        <!-- Live Coding afin de montrer ng-show, two way data biding, etc.. -->
-        <form id="login" role="form">
-            Bonjour !
 
-            Quel est ton nom ?  <input type="text" ng-model="user.email" />
+<div id="loginPage">
+    <form novalidate id="loginForm" role="form" class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" class="form-control" ng-model="lg.user.username" placeholder="Username" ng-required autofocus />
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" ng-model="lg.user.password" placeholder="Password" ng-required>
 
-            <div ng-show="user.username.length > 0">
-                <br><br>
-                Salut {{user.username}},
-                <br>
-                    Si tu veux avoir accès à ta page il va falloir donner ton mot de passe : <input type="password" name="user.password" />
-
-                <input type="button" ng-click="login(user)" value="Login" />
-            </div>
-        </form>
-    </div>
-
-    <div id="loginPage">
-        <form novalidate id="loginForm" role="form">
-            <input type="text" ng-model="user.email" placeholder="Username"/>
-            <input type="password" ng-model="user.password" placeholder="Password">
-            <input type="button" ng-click="vm.reset()" value="Reset" />
-            <input type="button" ng-click="vm.login(user)" value="Login" />
-        </form>
-        {{user.password}}
-    </div>
+        <input type="button" class="btn btn-danger btn-block" ng-click="lg.reset()" value="Reset" />
+        <input type="button" class="btn btn-primary btn-block" ng-click="lg.login(lg.user)" value="Login" />
+    </form>
 </div>

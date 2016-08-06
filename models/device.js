@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 
 var DeviceSchema   = new mongoose.Schema({
     name: String,
+    owner: String,
     type: String,
     quantity: Number,
     ip: String

@@ -17,7 +17,7 @@ function RegisterController($location, authService)
             .then(function(data) {
                 if( typeof data.message !== "undefined") {
                     authService.user.password = user.password;
-                    authService.user.email = user.email;
+                    authService.user.username = user.username;
                     $location.path('/');
                 } else {
                     console.log(data.error)
@@ -28,7 +28,7 @@ function RegisterController($location, authService)
 
     reg.reset = function() {
         reg.user = angular.copy({
-            email: "", password: ""
+            username: "", password: ""
         });
     };
 

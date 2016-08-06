@@ -17,8 +17,6 @@ function DevicesController($location, deviceService, authService)
     var deviceView = this;
     deviceView.devices = [];
 
-    activate();
-
     function activate() {
         return getDevices().then(function() {
             console.info('Activated devices View');
@@ -35,10 +33,11 @@ function DevicesController($location, deviceService, authService)
 
     deviceView.add = function(device){
         deviceService.addDevice(device).then(function (data) {
-            console.log(data)
-            console.log(deviceView.devices)
-            //deviceView.devices.push(device);
+            deviceView.devices.push(device);
         });
         return false;
     }
+
+    activate();
+
 }

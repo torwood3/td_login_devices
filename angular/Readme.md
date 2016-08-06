@@ -2,8 +2,8 @@
 2 - Route
 3 - Controller
 4 - Route => changement de page
-5 - Inject $scope
-6 - two way binding etc ...
+5 - HTML 1 - two way binding etc ...
+6 - Inject $scope
 7 - Form (vue + controller ... angular.copy())
 8 - Service + affichage du retour dans la page
 9 - redirect interne a angular
