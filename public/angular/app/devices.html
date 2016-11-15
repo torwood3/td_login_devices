@@ -1,0 +1,29 @@
+<div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-2">
+            Nombre de devices: {{deviceView.devices.length}}
+            <input type="search"  class="form-control" ng-model="q" placeholder="filter devices..." aria-label="filter devices" />
+            <br>
+            <form role="form">
+                <label for="name" class="sr-only">Name</label>
+                <input type="text" class="form-control" id="name" ng-model="device.name" placeholder="Name">
+                <label for="type" class="sr-only">Type</label>
+                <input type="text" id="type" class="form-control" ng-model="device.type" placeholder="Type">
+                <label for="ip" class="sr-only">IP</label>
+                <input type="text" id="ip" class="form-control" ng-model="device.ip" placeholder="IP">
+                <input type="button" class="btn" ng-click="deviceView.add(device)" value="Ajouter">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li ng-repeat="device in deviceView.devices | filter:q as results">
+                    [{{$index + 1}}] {{device.name}} - {{device.type}} - {{device.ip}}
+                </li>
+                <li class="animate-repeat" ng-if="results.length === 0">
+                    <strong>No results found...</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
