@@ -7,11 +7,17 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var fs = require('fs');
 
 var User = require('./models/user');
-var configDB = require('./database.js');
-mongoose.connect(configDB.url); // connect to our database
-
+fs.statSync('database.js', function(err, stat) {
+    if(err == null) {
+        var configDB = require('./database.js');
+        mongoose.connect(configDB.url); // connect to our database
+    } else if(err.code == 'ENOENT') {
+        mongoose.connect(process.env.mongoURL); // connect to our database
+    }
+});
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
